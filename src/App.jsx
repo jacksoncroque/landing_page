@@ -1,122 +1,165 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { motion } from "framer-motion";
+import { div, label } from "framer-motion/client";
+import {
+  ArrowRight,
+  Check,
+  Menu,
+  X,
+  Star,
+  Shield,
+  Zap,
+  Sparkles,
+} from "lucide-react";
+
+import { useState } from "react";
+
+const navLinks = [
+  { href: "#features", label: "Recursos" },
+  { href: "#testmonials", label: "Depoimentos" },
+  { href: "#pricing", label: "Preços" },
+  { href: "#faq", label: "FAQ" },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="bg-slate-950 text-slate-100 selection:bg-fuchsia-500/30">
+      {/* navbar */}
+      <header className="sticky top-0 z-40 border-b border-white/5">
+        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+          <a href="#" className="flex items-center gap-2">
+            {" "}
+            <Sparkles className="size-5 text-fuchsia-400" />{" "}
+            <span className="font-bold tracking-tight">Minha marca</span>
+          </a>
+          <nav className="hidden md:flex items-center gap-6 text-small">
+            {navLinks.map((link) => {
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="hover:text-fuchsia-300 transition"
+                >
+                  {link.label}
+                </a>
+              );
+            })}
+          </nav>
+
+          <button
+            className="md:hidden p-2 rounded-lg"
+            onClick={() => setOpen(true)}
+          >
+            <Menu className="size-5" />
+          </button>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
+
+        {open && (
+          <div className="md:hidden">
+            <div className="fixed bg-black/60" onClick={() => setOpen(false)}>
+              <div className="fixed right-0 top-0 h-full w-80 bg-slate-900 border-l border-white/10 p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="size-5 text-fuchsia-400" />
+                    <span className="font-semibold">Minha marca</span>
+                  </div>
+                  <button
+                    className="p-2 rounded-lg"
+                    onClick={() => setOpen(false)}
+                  >
+                    <X className="size-5" />
+                  </button>
+                </div>
+                <div className="flex flex-col gap-4 .bg-slate-900 p-4 w-90">
+                  {navLinks.map((link) => {
+                    return (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        className="text-slate-200"
+                        onClick={() => setOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center justify-between mb-2"></div>
+          </div>
+        )}
+      </header>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto max-w-6xl px-4 py-20">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-4xl font-extrabold"
+          >
+            Acelere sua presença online com uma landing{" "}
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-fuchsia-400 to-violet-300">
+              simples e eficaz!
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            className="mt-4 text-slate-400 max-w-2xl"
+          >
+            <span>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consectetur ea rem illum consequatur vel maxime explicabo quasi
+              asperiores ullam!
+            </span>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            className="mt-8 flex flex-row gap-3"
+          >
+            <a
+              href="#"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-fuchsia-600 px-6 py-3 font-medium hover:bg-fuchsia-700 transition"
+            >
+              Comece Agora <ArrowRight className="size-4" />
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-medium border border-white/10 hover:bg-white/5 transition"
+            >
+              Ver recursos
+            </a>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-14 grid grid-cols-3 gap-4"
+          >
+            {["Velocidade", "Segurança", "Conversão"].map((label, i) => (
+              <div className="rounded-2xl border border-white/10 bg-white/2 p-6">
+                <div className="flex items-center gap-3 ">
+                  {i == 0 && <Zap className="size-5 text-emerald-400" />}
+                  {i == 1 && <Shield className="size-5 text-sky-400" />}
+                  {i == 2 && <Star className="size-5 text-amber-400" />}
+                  <div className="font-semibold">{label}</div>
+                </div>
+                <p className="text-sm text-slate-400 mt-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+            ))}
+          </motion.div>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
       </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

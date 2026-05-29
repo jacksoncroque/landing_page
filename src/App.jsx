@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { div, label } from "framer-motion/client";
 import {
   ArrowRight,
   Check,
@@ -9,6 +8,7 @@ import {
   Shield,
   Zap,
   Sparkles,
+  Clock1,
 } from "lucide-react";
 
 import { useState } from "react";
@@ -91,6 +91,7 @@ function App() {
           </div>
         )}
       </header>
+
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-4 py-20">
@@ -125,13 +126,17 @@ function App() {
           >
             <a
               href="#"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-fuchsia-600 px-6 py-3 font-medium hover:bg-fuchsia-700 transition"
+              className="inline-flex items-center justify-center 
+              gap-2 rounded-2xl bg-fuchsia-600 px-6 py-3 font-medium 
+              hover:bg-fuchsia-700 transition"
             >
               Comece Agora <ArrowRight className="size-4" />
             </a>
             <a
               href="#"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-medium border border-white/10 hover:bg-white/5 transition"
+              className="inline-flex items-center justify-center 
+              gap-2 rounded-2xl px-6 py-3 font-medium border 
+              border-white/10 hover:bg-white/5 transition"
             >
               Ver recursos
             </a>
@@ -140,10 +145,13 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-14 grid grid-cols-3 gap-4"
+            className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4" /////////////////////////
           >
             {["Velocidade", "Segurança", "Conversão"].map((label, i) => (
-              <div className="rounded-2xl border border-white/10 bg-white/2 p-6">
+              <div
+                key={i}
+                className="rounded-2xl border border-white/10 bg-white/2 p-6"
+              >
                 <div className="flex items-center gap-3 ">
                   {i == 0 && <Zap className="size-5 text-emerald-400" />}
                   {i == 1 && <Shield className="size-5 text-sky-400" />}
@@ -158,6 +166,138 @@ function App() {
           </motion.div>
         </div>
       </section>
+
+      {/* Features */}
+      <section id="features" className="mx-auto max-w-6xl px-4 py-8">
+        <h2 className="text-3xl font-bold">Tudo o que você precisa</h2>
+        <p className="text-slate-300 mt-2 mw-2xl">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque
+          minima eveniet earum doloribus?
+        </p>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela",
+              icon: <Sparkles className="size-5 text-fuchsia-400" />,
+            },
+            {
+              id: 1,
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela",
+              icon: <Zap className="size-5 text-emerald-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela",
+              icon: <Shield className="size-5 text-sky-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela",
+              icon: <Sparkles className="size-5 text-fuchsia-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela",
+              icon: <Zap className="size-5 text-emerald-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela",
+              icon: <Shield className="size-5 text-sky-400" />,
+            },
+          ].map((feature, index) => (
+            <div
+              key={index}
+              className="rounded-2xl border border-white/10 bg-white/2 p-6"
+            >
+              <div className="flex items-center gap-3">
+                {feature.icon}
+                <p className="font-semibold">{feature.title}</p>
+              </div>
+              <p className="text-sm text-slate-400 mt-2">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Depoimentos */}
+      <section id="testimonials" className="mx-auto max-w-6xl px-4 py-8">
+        <h2 className="text-3xl font-bold">Quem usou, aprovou </h2>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[1, 2, 3].map((i) => (
+            <blockquote
+              key={i}
+              className="rounded 2xl border border-white/10 p-6"
+            >
+              <div className="flex items-center gap-2 text-amber-400">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-4 fill-current" />
+                ))}
+              </div>
+              <p className="mt-3 text-slate-300">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
+                quia facere harum?
+              </p>
+              <footer className="mt-3 text-sm text-slate-400">
+                {" "}
+                -Nome do cliente
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </section>
+
+      {/* Preços */}
+      <section id="pricing" className="mx-auto max-w-6xl px-4 py-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h2 className="text-3xl font-bold">Plano único sem complicação</h2>
+            <p className="text-slate-300 mt-6 mw-2xl">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque
+              minima eveniet earum doloribus?
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-slate-300">
+              <li className="flex items-center gap-2">
+                <Check className="size-4 text-emerald-400" /> Benefício 1
+              </li>
+              <li className="flex items-center gap-2">
+                <Check className="size-4 text-emerald-400" /> Benefício 2
+              </li>
+              <li className="flex items-center gap-2">
+                <Check className="size-4 text-emerald-400" /> Benefício 3
+              </li>
+            </ul>
+          </div>
+          <div className="rounded-3xl border border-white/10  bg-white/2 p-6">
+            <div className="text-sm text-slate-400">A partir de</div>
+            <div className="text-5xl font-extrabold mt-2">R$199,99</div>
+            <div className="text-sm text-slate-300 mt-4 flex gap-2 items-center">
+              <Clock1 className="size-6 text-amber-400" />
+              <p>Somente hoje!</p>
+            </div>
+            <button
+              href="#"
+              className="mt-6 rounded-2xl bg-fuchsia-600 px-6 py-3 font-medium cursor-pointer hover:bg-fuchsia-400"
+            >
+              Comprar agora!
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-white">
+        <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col items-center">
+          <div className="mb-4">
+            Minha marca &copy;{new Date().getFullYear()}
+          </div>
+          <a href="#" className="text-slate-300">
+            Política de Privacidade
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

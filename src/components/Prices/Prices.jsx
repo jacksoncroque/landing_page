@@ -3,7 +3,7 @@ import { Check, Clock1 } from "lucide-react";
 const Prices = () => {
   return (
     <div className="bg-slate-950 text-slate-100 selection:bg-fuchsia-500/30">
-      <section id="pricing" className="mx-auto max-w-6xl px-4 py-8 mb-20">
+      <section id="pricing" className="mx-auto max-w-6xl px-4 pt-8 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div>
             <h2 className="text-3xl font-bold">Plano único sem complicação</h2>

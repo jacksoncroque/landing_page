@@ -10,6 +10,9 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
+
+  base: "/landing_page",
+
   server: {
     port: 4000,
   },

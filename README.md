@@ -1,18 +1,46 @@
-# React + Vite
+# Landing Page Moderna com React + TailwindCSS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto de landing page moderna desenvolvido com React, Vite, TailwindCSS e Framer Motion, com foco em design responsivo, animações suaves e interface moderna.
 
-Currently, two official plugins are available:
+## Tecnologias utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* React
+* Vite
+* TailwindCSS
+* Framer Motion
+* Lucide React
 
-## React Compiler
+## Funcionalidades
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+* Layout totalmente responsivo
+* Menu mobile com sidebar
+* Hero section animada
+* Cards de recursos
+* Sessão de depoimentos
+* Sessão de preços
+* Footer simples e moderno
+* Animações utilizando Framer Motion
+* Ícones com Lucide React
 
-Note: This will impact Vite dev & build performances.
+## Preview
 
-## Expanding the ESLint configuration
+A landing page possui:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Navbar fixa no topo
+* Sessão principal com CTA
+* Recursos destacados
+* Depoimentos de clientes
+* Plano de preços
+* Design moderno em tema escuro
+
+
+## Objetivo do projeto
+
+Este projeto foi desenvolvido para praticar:
+
+* Componentização no React
+* Responsividade com TailwindCSS
+* Animações com Framer Motion
+* Estruturação de landing pages modernas
+* Organização visual e UI
+

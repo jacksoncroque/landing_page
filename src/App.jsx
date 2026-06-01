@@ -145,7 +145,7 @@ function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4" /////////////////////////
+            className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-4" 
           >
             {["Velocidade", "Segurança", "Conversão"].map((label, i) => (
               <div
